@@ -14,13 +14,13 @@ export const theme = extendTheme({
 				ghost: (props: any) => ({
 					...defaultTheme.components.Button.variants.ghost(props),
 					_hover: {
-						bg: mode('teal.500', 'teal.400')(props),
+						bg: 'whiteAlpha.200',
 					},
 				}),
 				outline: (props: any) => ({
 					...defaultTheme.components.Button.variants.outline(props),
 					_hover: {
-						bg: `whiteAlpha.200`,
+						bg: 'whiteAlpha.200',
 					},
 				}),
 			},
@@ -52,6 +52,9 @@ export const theme = extendTheme({
 				'--colors-highlight-300': '#4FD1C5',
 				'--colors-highlight-500': '#319795',
 				'--colors-highlight-700': '#285E61',
+				'--header-height': '4rem',
+				'--header-menu-full': 'none',
+				'--header-menu-icon': 'flex',
 				'--swiper-navigation-size': '1.25rem',
 				'--swiper-theme-color': '#285E61',
 			},
@@ -113,6 +116,8 @@ export const theme = extendTheme({
 				':root': {
 					'--defaultFontSize': '125%',
 					'--swiper-navigation-size': '2rem',
+					'--header-menu-full': 'flex',
+					'--header-menu-icon': 'none',
 				},
 			},
 			'@media only screen and (min-width: 768px)': {},

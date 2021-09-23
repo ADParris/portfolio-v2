@@ -63,6 +63,7 @@ export const SectionContainer: React.FC<IComponentProps> = ({
 			flex={1}
 			flexDir="column"
 			h="full"
+			id={tag}
 			minH={minH}
 			px="1rem"
 			position="relative"

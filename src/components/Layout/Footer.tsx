@@ -1,15 +1,26 @@
+import { Flex, Text, useColorMode } from '@chakra-ui/react';
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-
-import { Flex, Text } from '@chakra-ui/react';
 
 interface IComponentProps {}
 
 export const Footer: React.FC<IComponentProps> = () => {
+	const { colorMode } = useColorMode();
+	const isDarkMode = colorMode === 'dark';
+	const currentBgColor = isDarkMode ? 'gray.800' : 'gray.100';
+	const {
+		site: {
+			meta: {
+				author: { name },
+			},
+		},
+	} = useStaticQuery(query);
+
 	return (
 		<Flex
 			alignItems="flex-end"
 			as="footer"
-			bgColor="gray.100"
+			bgColor={currentBgColor}
 			clipPath="polygon(0 3vw, 100% 0, 100% 100%, 0% 100%)"
 			h="4rem"
 		>
@@ -26,9 +37,21 @@ export const Footer: React.FC<IComponentProps> = () => {
 					fontSize="clamp(16px, 3vw, 20px)"
 					fontWeight="bold"
 				>
-					Footer
+					{`Designed & Built by ${name}`}
 				</Text>
 			</Flex>
 		</Flex>
 	);
 };
+
+const query = graphql`
+	{
+		site {
+			meta: siteMetadata {
+				author {
+					name
+				}
+			}
+		}
+	}
+`;
