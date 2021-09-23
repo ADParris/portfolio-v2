@@ -70,9 +70,8 @@ export const Header: React.FC<IComponentProps> = () => {
 				px={4}
 			>
 				<Link
-					_hover={{ color: 'var(--colors-highlight-200)' }}
+					_hover={{ color: 'var(--colors-highlight-300)' }}
 					aria-label="home"
-					color="var(--colors-highlight-500)"
 					href="/"
 					p={2}
 				>

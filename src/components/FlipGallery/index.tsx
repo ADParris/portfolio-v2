@@ -3,7 +3,7 @@ import 'swiper/css/effect-flip';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { Flex, Link } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import SwiperCore, {
@@ -15,11 +15,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IContentData } from '@data/models';
 
-import { ImageDisplay } from '../displays';
+import { ImageDisplay, LinkDisplay } from '../displays';
 import { InfoBox } from './InfoBox';
 import { Title } from './Title';
-
-// import { Note } from './Note';
 
 SwiperCore.use([EffectFlip, Pagination, Navigation]);
 
@@ -76,23 +74,18 @@ export const FlipGallery: React.FC<IComponentProps> = ({ items }) => {
 									{/* links */}
 									{hasLinks && (
 										<Flex flex={1} justifyContent="center" my={2}>
-											<Link
-												mr={2}
-												p={2}
-												href={item.frontmatter.repo}
-												rel="noopener noreferrer nofollow"
-												target="_blank"
+											<LinkDisplay
+												bgIsLight={bgIsLight}
+												link={item.frontmatter.repo}
 											>
 												<FiGithub />
-											</Link>
-											<Link
-												p={2}
-												href={item.frontmatter.link}
-												rel="noopener noreferrer nofollow"
-												target="_blank"
+											</LinkDisplay>
+											<LinkDisplay
+												bgIsLight={bgIsLight}
+												link={item.frontmatter.link}
 											>
 												<FiExternalLink />
-											</Link>
+											</LinkDisplay>
 										</Flex>
 									)}
 									<Flex mt={hasLinks ? 0 : 8}>

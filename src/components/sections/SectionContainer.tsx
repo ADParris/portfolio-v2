@@ -1,5 +1,12 @@
-import { Flex, Text, useColorMode } from '@chakra-ui/react';
+import {
+	Flex,
+	Text,
+	useColorMode,
+	usePrefersReducedMotion,
+} from '@chakra-ui/react';
+import { motion, useAnimation } from 'framer-motion';
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface IComponentProps {
 	id: number;
@@ -23,24 +30,25 @@ export const SectionContainer: React.FC<IComponentProps> = ({
 			? 'gray.800'
 			: 'gray.100'
 		: 'transparent';
-
 	const currentColor = isOdd && !isDarkMode ? 'gray.800' : 'gray.100';
 
-	const beforeLineColor =
-		isDarkMode || isOdd ? 'gray.800' : 'gray.100';
+	const beforeItemsColor =
+		isDarkMode || !isOdd
+			? 'var(--colors-highlight-300)'
+			: 'var(--colors-highlight-500)';
 
 	const beforeLine = {
-		bgColor: beforeLineColor,
+		bgColor: beforeItemsColor,
 		content: `''`,
 		display: `block`,
 		h: '1px',
-		mr: '20px',
+		mr: '1rem',
 		position: `relative`,
 		w: `full`,
 	};
 
 	const beforeNumber = {
-		color: 'var(--colors-highlight-dark)',
+		color: beforeItemsColor,
 		content: `'0${id}.'`,
 		display: `block`,
 		fontFamily: `Gruppo`,
@@ -49,6 +57,23 @@ export const SectionContainer: React.FC<IComponentProps> = ({
 		mr: '0.25rem',
 		position: `relative`,
 	};
+
+	const animationController = useAnimation();
+	const { inView, ref: inViewRef } = useInView();
+	const prefersReducedMotion = usePrefersReducedMotion();
+
+	React.useEffect(() => {
+		if (inView) {
+			animationController.start({
+				opacity: 1,
+				transition: {
+					delay: 0.5,
+					duration: 1.5,
+				},
+				y: 0,
+			});
+		}
+	}, [inView, animationController]);
 
 	return (
 		<Flex
@@ -86,7 +111,21 @@ export const SectionContainer: React.FC<IComponentProps> = ({
 					</Text>
 				</Flex>
 			)}
-			{children}
+			<Flex
+				animate={animationController}
+				as={motion.div}
+				alignItems="center"
+				exit={{ opacity: 0 }}
+				flex={1}
+				initial={{
+					opacity: 0,
+					y: prefersReducedMotion ? 0 : '1rem',
+				}}
+				justifyContent="center"
+				ref={inViewRef}
+			>
+				{children}
+			</Flex>
 		</Flex>
 	);
 };

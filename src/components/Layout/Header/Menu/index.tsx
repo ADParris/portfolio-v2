@@ -69,15 +69,16 @@ export const Menu: React.FC = () => {
 				>
 					<DrawerOverlay />
 					<DrawerContent>
-						<DrawerCloseButton size="sm" />
+						<DrawerCloseButton color="gray.100" size="sm" />
 						<Flex
 							alignItems="center"
 							as="header"
+							bgColor="var(--colors-highlight-700)"
 							display="flex"
 							h="6rem"
 							justifyContent="center"
 						>
-							<Text as="h1" fontFamily="Gruppo">
+							<Text as="h1" color="gray.100" fontFamily="Gruppo">
 								AP
 							</Text>
 						</Flex>

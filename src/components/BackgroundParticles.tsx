@@ -1,8 +1,10 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, usePrefersReducedMotion } from '@chakra-ui/react';
 import React from 'react';
 import Particles, { IOptions } from 'react-tsparticles';
 
 export const BackgroundParticles: React.FC = () => {
+	const prefersReducedMotion = usePrefersReducedMotion();
+
 	const particlesCanvasStyle = {
 		h: 'full',
 		left: 0,
@@ -26,7 +28,7 @@ export const BackgroundParticles: React.FC = () => {
 				distance: 100,
 			},
 			move: {
-				enable: true,
+				enable: prefersReducedMotion ? false : true,
 				speed: 0.2,
 				outModes: {
 					default: 'bounce',
