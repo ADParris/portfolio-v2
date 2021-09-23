@@ -1,0 +1,43 @@
+{
+	"name": "portfolio-v2",
+	"private": true,
+	"description": "Portfolio site for Andrew Parris, web developer.",
+	"version": "0.1.0",
+	"license": "0BSD",
+	"scripts": {
+		"build": "gatsby build",
+		"develop": "gatsby develop",
+		"start": "gatsby develop",
+		"serve": "gatsby serve",
+		"clean": "gatsby clean",
+		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+	},
+	"dependencies": {
+		"@chakra-ui/gatsby-plugin": "^2.0.1",
+		"@chakra-ui/react": "^1.6.8",
+		"@emotion/react": "^11.4.1",
+		"@emotion/styled": "^11.3.0",
+		"@fontsource/gruppo": "^4.5.0",
+		"@fontsource/nunito": "^4.5.0",
+		"framer-motion": "^4.1.17",
+		"gatsby": "^4.0.0-zz-next.1",
+		"gatsby-plugin-image": "^1.14.0",
+		"gatsby-plugin-sharp": "^3.14.0",
+		"gatsby-remark-external-links": "^0.0.4",
+		"gatsby-remark-images": "^5.11.0",
+		"gatsby-source-filesystem": "^3.14.0",
+		"gatsby-transformer-remark": "^4.11.0",
+		"gatsby-transformer-sharp": "^3.14.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-icons": "^4.2.0",
+		"react-tsparticles": "^1.35.1",
+		"react-typed": "^1.2.0",
+		"swiper": "^7.0.6"
+	},
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ADParris/portfolio-v2"
+	}
+}
