@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import Typed from 'react-typed';
 
-import { ImageDisplay } from '../displays';
+import { ImageDisplay } from '@components/common';
 import { SectionContainer } from './SectionContainer';
 
 export const HeroSection: React.FC = () => {
@@ -35,7 +35,11 @@ export const HeroSection: React.FC = () => {
 					flexDir="column"
 					w="clamp(280px, 90vw, 600px)"
 				>
-					<Flex justifyContent="center" mb={4} w="50%">
+					<Flex
+						justifyContent="center"
+						mb={4}
+						w="clamp(180px, 40vw, 340px)"
+					>
 						<ImageDisplay alt={name} border round src={imageSharp} />
 					</Flex>
 					<Text as="h1">{name}</Text>

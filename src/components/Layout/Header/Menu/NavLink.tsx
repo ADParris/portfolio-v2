@@ -3,7 +3,7 @@ import React from 'react';
 
 interface IComponentProps {
 	count: number;
-	handleClose: () => void;
+	handleClose?: () => void;
 	link: string;
 }
 
@@ -13,7 +13,7 @@ export const NavLink: React.FC<IComponentProps> = ({
 	link,
 }) => {
 	const after = {
-		bgColor: 'var(--colors-highlight-300)',
+		bgColor: 'var(--colors-highlight-200)',
 		bottom: '-0.37em',
 		borderRadius: '3px',
 		content: '""',
@@ -25,7 +25,7 @@ export const NavLink: React.FC<IComponentProps> = ({
 	};
 
 	const before = {
-		color: 'var(--colors-highlight-500)',
+		color: 'var(--colors-highlight-300)',
 		content: `'0${count}.'`,
 		fontSize: '0.7em',
 		fontWeight: 'bold',
@@ -44,6 +44,7 @@ export const NavLink: React.FC<IComponentProps> = ({
 			href={`/#${link}`}
 			letterSpacing="tight"
 			onClick={handleClose}
+			mt={handleClose ? '0.5rem' : 0}
 			variant="ghost"
 		>
 			<Text

@@ -3,14 +3,12 @@ import React from 'react';
 
 import { theme } from '@data/theme';
 
-import { BackgroundParticles } from '../BackgroundParticles';
+import { BackgroundParticles } from './BackgroundParticles';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { Main } from './Main';
 
-interface IComponentProps {}
-
-export const Layout: React.FC<IComponentProps> = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
 	return (
 		<ChakraProvider theme={theme}>
 			<BackgroundParticles />

@@ -22,16 +22,14 @@ export const InfoBox: React.FC<IComponentProps> = ({
 	info,
 }) => {
 	const linkStyles = {
-		a: {
-			_hover: {
-				color: bgIsLight
-					? 'var(--colors-highlight-500)'
-					: 'var(--colors-highlight-50)',
-			},
+		_hover: {
 			color: bgIsLight
-				? 'var(--colors-highlight-700)'
+				? 'var(--colors-highlight-300)'
 				: 'var(--colors-highlight-200)',
 		},
+		color: bgIsLight
+			? 'var(--colors-highlight-500)'
+			: 'var(--colors-highlight-300)',
 	};
 
 	return (
@@ -39,19 +37,21 @@ export const InfoBox: React.FC<IComponentProps> = ({
 			bgColor="blackAlpha.200"
 			border="1px solid"
 			borderRadius={8}
-			maxW="clamp(300px, 96vw, 600px)"
-			mx="auto"
+			maxW="clamp(260px, 96vw, 600px)"
+			mb="3rem"
+			mx={2}
 			p={4}
 		>
 			<Flex alignItems="flex-end" flexDir="column">
 				<Flex
-					__css={linkStyles}
+					__css={{ a: linkStyles }}
 					dangerouslySetInnerHTML={{ __html: info }}
 				/>
 				{additional && (
 					<Popover placement="top-end">
 						<PopoverTrigger>
 							<Link
+								{...linkStyles}
 								fontFamily="Gruppo"
 								fontStyle="italic"
 								fontWeight="bold"
@@ -59,11 +59,7 @@ export const InfoBox: React.FC<IComponentProps> = ({
 								note
 							</Link>
 						</PopoverTrigger>
-						<PopoverContent
-							maxW="clamp(300px, 94vw, 600px)"
-							mx="auto"
-							w="full"
-						>
+						<PopoverContent maxW="clamp(260px, 96vw, 600px)" w="full">
 							<PopoverArrow />
 							<PopoverCloseButton />
 							<PopoverBody

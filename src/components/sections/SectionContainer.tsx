@@ -22,7 +22,11 @@ export const SectionContainer: React.FC<IComponentProps> = ({
 	tag,
 	title,
 }) => {
+	const animationController = useAnimation();
 	const { colorMode } = useColorMode();
+	const { inView, ref: inViewRef } = useInView();
+	const prefersReducedMotion = usePrefersReducedMotion();
+
 	const isOdd = id % 2 !== 0;
 	const isDarkMode = colorMode === 'dark';
 	const currentBgColor = isOdd
@@ -32,23 +36,28 @@ export const SectionContainer: React.FC<IComponentProps> = ({
 		: 'transparent';
 	const currentColor = isOdd && !isDarkMode ? 'gray.800' : 'gray.100';
 
-	const beforeItemsColor =
+	const beforeLineColor =
 		isDarkMode || !isOdd
-			? 'var(--colors-highlight-300)'
-			: 'var(--colors-highlight-500)';
+			? 'var(--colors-highlight-500)'
+			: 'var(--colors-highlight-700)';
 
 	const beforeLine = {
-		bgColor: beforeItemsColor,
+		bgColor: beforeLineColor,
 		content: `''`,
 		display: `block`,
-		h: '1px',
+		h: '0.5px',
 		mr: '1rem',
 		position: `relative`,
 		w: `full`,
 	};
 
+	const beforeNumberColor =
+		isDarkMode || !isOdd
+			? 'var(--colors-highlight-300)'
+			: 'var(--colors-highlight-500)';
+
 	const beforeNumber = {
-		color: beforeItemsColor,
+		color: beforeNumberColor,
 		content: `'0${id}.'`,
 		display: `block`,
 		fontFamily: `Gruppo`,
@@ -57,10 +66,6 @@ export const SectionContainer: React.FC<IComponentProps> = ({
 		mr: '0.25rem',
 		position: `relative`,
 	};
-
-	const animationController = useAnimation();
-	const { inView, ref: inViewRef } = useInView();
-	const prefersReducedMotion = usePrefersReducedMotion();
 
 	React.useEffect(() => {
 		if (inView) {

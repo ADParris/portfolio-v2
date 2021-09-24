@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	Button,
 	Flex,
@@ -8,6 +7,7 @@ import {
 	useColorMode,
 	useColorModeValue,
 } from '@chakra-ui/react';
+import React from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 interface IComponentProps {
@@ -31,8 +31,8 @@ export const ColorModeSwitcher: React.FC<IComponentProps> = ({
 			aria-label={`switch to ${text} mode`}
 			leftIcon={<Icon as={SwitchIcon} />}
 			onClick={handleToggleAndClose}
-			m="0.5rem"
-			p={0}
+			px="0.5rem"
+			py="1rem"
 			variant="ghost"
 		>
 			<Text

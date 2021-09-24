@@ -2,8 +2,10 @@ import { Flex } from '@chakra-ui/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-import { CustomButton } from '../common';
-import { SectionIntroDisplay } from '../displays';
+import {
+	CustomButton,
+	SectionIntroDisplay,
+} from '@components/common';
 import { SectionContainer } from './SectionContainer';
 
 export const ContactSection: React.FC = () => {
@@ -14,8 +16,8 @@ export const ContactSection: React.FC = () => {
 	const { frontmatter, html } = nodes[0];
 
 	return (
-		<SectionContainer minH="calc(100vh - 9vw)" {...frontmatter}>
-			<Flex alignItems="center" flex={1} flexDir="column" py={8}>
+		<SectionContainer minH="86vh" {...frontmatter}>
+			<Flex alignItems="center" flex={1} flexDir="column" py="3vw">
 				<SectionIntroDisplay intro={html} />
 				<Flex mt={16}>
 					<CustomButton

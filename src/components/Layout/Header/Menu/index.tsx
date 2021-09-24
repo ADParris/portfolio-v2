@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
 	Divider,
 	Drawer,
@@ -9,14 +7,16 @@ import {
 	Flex,
 	Icon,
 	IconButton,
-	Text,
+	Link,
 	useDisclosure,
 } from '@chakra-ui/react';
 import { graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
 import { FiMenu } from 'react-icons/fi';
 
 import { INavLink } from '@data/models';
 
+import { SiteLogo } from '@components/common';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { NavLink } from './NavLink';
 
@@ -30,11 +30,11 @@ export const Menu: React.FC = () => {
 	const navLinks = links as INavLink[];
 	const btnRef = React.useRef<HTMLButtonElement>(null);
 
-	const _buildNavLinks = () =>
+	const _buildNavLinks = (drawer?: boolean) =>
 		navLinks.map(link => (
 			<NavLink
 				count={link.frontmatter.id}
-				handleClose={onClose}
+				handleClose={drawer ? onClose : undefined}
 				key={`${link.frontmatter.tag}-link`}
 				link={link.frontmatter.tag}
 			/>
@@ -42,13 +42,10 @@ export const Menu: React.FC = () => {
 
 	return (
 		<>
-			{/* Full Menu */}
 			<Flex display="var(--header-menu-full)" alignItems="center">
 				{_buildNavLinks()}
 				<ColorModeSwitcher />
 			</Flex>
-
-			{/* Hamburger w/ Drawer */}
 			<Flex display="var(--header-menu-icon)">
 				<IconButton
 					_hover={{ background: 'whiteAlpha.200' }}
@@ -78,19 +75,31 @@ export const Menu: React.FC = () => {
 							h="6rem"
 							justifyContent="center"
 						>
-							<Text as="h1" color="gray.100" fontFamily="Gruppo">
-								AP
-							</Text>
+							<Flex
+								_hover={{ color: 'var(--colors-highlight-200)' }}
+								aria-label="home"
+								as={Link}
+								href="/#top"
+								p={2}
+							>
+								<SiteLogo h="3rem" w="3rem" />
+							</Flex>
 						</Flex>
 
 						<Flex
 							alignItems="flex-start"
 							as="main"
-							flex={1}
 							flexDir="column"
 							px="1rem"
 						>
-							{_buildNavLinks()}
+							<Flex
+								alignItems="flex-start"
+								flex={1}
+								flexDir="column"
+								my="0.5rem"
+							>
+								{_buildNavLinks(true)}
+							</Flex>
 							<Divider my="0.5rem" />
 							<ColorModeSwitcher handleClose={onClose} />
 						</Flex>

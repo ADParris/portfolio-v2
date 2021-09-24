@@ -1,13 +1,8 @@
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 
-import { Flex } from '@chakra-ui/react';
-
-interface IComponentProps {}
-
-export const Main: React.FC<IComponentProps> = ({ children }) => {
-	return (
-		<Flex as="main" flex={1} flexDir="column">
-			{children}
-		</Flex>
-	);
-};
+export const Main: React.FC = ({ children }) => (
+	<Flex as="main" flex={1} flexDir="column">
+		{children}
+	</Flex>
+);

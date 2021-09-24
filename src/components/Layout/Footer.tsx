@@ -2,12 +2,8 @@ import { Flex, Text, useColorMode } from '@chakra-ui/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-interface IComponentProps {}
-
-export const Footer: React.FC<IComponentProps> = () => {
+export const Footer: React.FC = () => {
 	const { colorMode } = useColorMode();
-	const isDarkMode = colorMode === 'dark';
-	const currentBgColor = isDarkMode ? 'gray.800' : 'gray.100';
 	const {
 		site: {
 			meta: {
@@ -15,6 +11,9 @@ export const Footer: React.FC<IComponentProps> = () => {
 			},
 		},
 	} = useStaticQuery(query);
+
+	const isDarkMode = colorMode === 'dark';
+	const currentBgColor = isDarkMode ? 'gray.800' : 'gray.100';
 
 	return (
 		<Flex

@@ -95,7 +95,7 @@ export const theme = extendTheme({
 			'.swiper': {
 				height: 'fit-content',
 				pt: '6vw',
-				width: 'clamp(280px, 90vw, 800px)',
+				width: 'clamp(260px, 90vw, 760px)',
 			},
 			'.swiper-horizontal > .swiper-pagination-bullets': {
 				bottom: 'unset',

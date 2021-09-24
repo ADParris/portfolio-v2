@@ -4,9 +4,7 @@ import React from 'react';
 
 import { SectionContainer } from './SectionContainer';
 
-interface IComponentProps {}
-
-export const AboutSection: React.FC<IComponentProps> = () => {
+export const AboutSection: React.FC = () => {
 	const {
 		allMarkdownRemark: { nodes },
 	} = useStaticQuery(query);
@@ -14,7 +12,7 @@ export const AboutSection: React.FC<IComponentProps> = () => {
 	const { frontmatter, html } = nodes[0];
 
 	return (
-		<SectionContainer minH="100vh" {...frontmatter}>
+		<SectionContainer minH="90vh" {...frontmatter}>
 			<Flex
 				__css={{ p: { mb: 4 } }}
 				flex={1}

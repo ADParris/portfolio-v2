@@ -1,17 +1,15 @@
 import {
 	Flex,
 	Link,
-	Text,
 	usePrefersReducedMotion,
 } from '@chakra-ui/react';
 import { motion, useAnimation } from 'framer-motion';
 import React from 'react';
 
+import { SiteLogo } from '@components/common';
 import { Menu } from './Menu';
 
-interface IComponentProps {}
-
-export const Header: React.FC<IComponentProps> = () => {
+export const Header: React.FC = () => {
 	const animationController = useAnimation();
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const prevScrollYPos = React.useRef(0);
@@ -51,7 +49,7 @@ export const Header: React.FC<IComponentProps> = () => {
 			animate={animationController}
 			as={motion.header}
 			backdropFilter="saturate(120%) blur(10px)"
-			bgColor="whiteAlpha.300"
+			bgColor="whiteAlpha.400"
 			boxShadow="0px 10px 10px -7px rgba(45, 55, 72,0.7)"
 			flex={1}
 			initial={{ top: 0 }}
@@ -69,14 +67,15 @@ export const Header: React.FC<IComponentProps> = () => {
 				justifyContent="space-between"
 				px={4}
 			>
-				<Link
-					_hover={{ color: 'var(--colors-highlight-300)' }}
+				<Flex
+					_hover={{ color: 'var(--colors-highlight-200)' }}
 					aria-label="home"
-					href="/"
+					as={Link}
+					href="/#top"
 					p={2}
 				>
-					<Text>AP</Text>
-				</Link>
+					<SiteLogo h="2rem" w="2rem" />
+				</Flex>
 				<Menu />
 			</Flex>
 		</Flex>

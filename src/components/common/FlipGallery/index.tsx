@@ -3,7 +3,7 @@ import 'swiper/css/effect-flip';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { Flex } from '@chakra-ui/react';
+import { Flex, useColorMode } from '@chakra-ui/react';
 import React from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import SwiperCore, {
@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IContentData } from '@data/models';
 
-import { ImageDisplay, LinkDisplay } from '../displays';
+import { ImageDisplay, LinkDisplay } from '@components/common';
 import { InfoBox } from './InfoBox';
 import { Title } from './Title';
 
@@ -26,6 +26,7 @@ interface IComponentProps {
 }
 
 export const FlipGallery: React.FC<IComponentProps> = ({ items }) => {
+	const { colorMode } = useColorMode();
 	const [currentSection, setCurrentSection] = React.useState('');
 
 	const setSection = (tag: string) => {
@@ -34,7 +35,8 @@ export const FlipGallery: React.FC<IComponentProps> = ({ items }) => {
 		}
 	};
 
-	const bgIsLight = currentSection === 'projects';
+	const isDarkMode = colorMode === 'dark';
+	const bgIsLight = currentSection === 'projects' && !isDarkMode;
 
 	return (
 		<Flex
@@ -88,7 +90,7 @@ export const FlipGallery: React.FC<IComponentProps> = ({ items }) => {
 											</LinkDisplay>
 										</Flex>
 									)}
-									<Flex mt={hasLinks ? 0 : 8}>
+									<Flex justifyContent="center" mt={hasLinks ? 0 : 8}>
 										<InfoBox
 											additional={additional?.note ?? undefined}
 											bgIsLight={bgIsLight}

@@ -4,20 +4,17 @@ import React from 'react';
 
 import { IContentData } from '@data/models';
 
+import { FlipGallery, SectionIntroDisplay } from '@components/common';
 import { SectionContainer } from './SectionContainer';
-import { FlipGallery } from '../FlipGallery';
-import { SectionIntroDisplay } from '../displays';
 
-interface IComponentProps {}
-
-export const WorkSection: React.FC<IComponentProps> = () => {
+export const WorkSection: React.FC = () => {
 	const { section, entries } = useStaticQuery(query);
 
 	const { frontmatter, html } = section
 		.data[0] as IContentData['section']['data'][0];
 
 	return (
-		<SectionContainer minH="100vh" {...frontmatter}>
+		<SectionContainer minH="130vh" {...frontmatter}>
 			<Flex alignItems="center" flex={1} flexDir="column">
 				<SectionIntroDisplay intro={html} />
 				<FlipGallery items={entries.data} />

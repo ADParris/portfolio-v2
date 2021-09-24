@@ -17,6 +17,7 @@ export const LinkDisplay: React.FC<IComponentProps> = ({
 	const normalColor = bgIsLight
 		? 'var(--colors-highlight-500)'
 		: 'var(--colors-highlight-300)';
+
 	return (
 		<Link
 			_hover={{ color: hoverColor }}
