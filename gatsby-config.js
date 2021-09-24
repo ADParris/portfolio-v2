@@ -14,6 +14,20 @@ module.exports = {
 			},
 		},
 		'gatsby-plugin-image',
+		{
+			resolve: `gatsby-plugin-manifest`,
+			options: {
+				background_color: '#1D4044',
+				display: 'minimal-ui',
+				icon: 'src/assets/images/icon.png',
+				name: 'Andrew Parris',
+				short_name: 'AP',
+				start_url: '/',
+				theme_color: '#EDF2F7',
+			},
+		},
+		'gatsby-plugin-offline',
+		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-sharp',
 		{
 			resolve: `gatsby-source-filesystem`,
@@ -60,6 +74,7 @@ module.exports = {
 			name: 'Andrew Parris',
 		},
 		description: 'Portfolio site for Andrew Parris, web developer.',
+		image: '/og.png',
 		title: 'Andrew Parris',
 		url: 'https://andrewparris.dev',
 	},

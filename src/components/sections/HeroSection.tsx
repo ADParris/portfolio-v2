@@ -8,13 +8,15 @@ import { SectionContainer } from './SectionContainer';
 
 export const HeroSection: React.FC = () => {
 	const {
+		allFile: { nodes },
 		site: {
 			data: {
 				author: { name },
 			},
 		},
-		imageSharp,
 	} = useStaticQuery(query);
+
+	const imageData = nodes[0].childImageSharp;
 
 	const typedText = [
 		'FRONT-END DEVELOPER.',
@@ -40,7 +42,7 @@ export const HeroSection: React.FC = () => {
 						mb={4}
 						w="clamp(180px, 40vw, 340px)"
 					>
-						<ImageDisplay alt={name} border round src={imageSharp} />
+						<ImageDisplay alt={name} border round src={imageData} />
 					</Flex>
 					<Text as="h1">{name}</Text>
 					<Text as="h2" className="hero-subTitle" color="gray.400">
@@ -59,15 +61,19 @@ export const HeroSection: React.FC = () => {
 
 const query = graphql`
 	{
+		allFile(filter: { name: { eq: "me" } }) {
+			nodes {
+				childImageSharp {
+					gatsbyImageData
+				}
+			}
+		}
 		site {
 			data: siteMetadata {
 				author {
 					name
 				}
 			}
-		}
-		imageSharp {
-			gatsbyImageData
 		}
 	}
 `;
