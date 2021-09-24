@@ -7,4 +7,4 @@ tag: 'projects'
 title: 'Andrew Parris'
 ---
 
-Created using [Gatsby](https://www.gatsbyjs.com), this static site has implemented features such as light/dark modes and animations with reduced motion (if you have that option enabled in your OS).
+With the site you are currently viewing, I set out to make a portfolio of what I can do. It implements light and dark modes, reduced motion (if that feature is disabled on your OS), and a layout that appears to be completely responsive regardless of the screen size. It is a [Gatsby](https://www.gatsbyjs.com) static site utilizing my favorite styling system, [Chakra-UI](https://chakra-ui.com).
