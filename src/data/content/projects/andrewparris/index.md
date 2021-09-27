@@ -1,8 +1,8 @@
 ---
 id: 1
 image: './andrewparris.png'
-link: 'https://andrewparris.dev'
-repo: 'https://github.com/AndrewParris/andrewparris.dev'
+link: 'https://andrewparris.gatsbyjs.io'
+repo: 'https://github.com/ADParris/portfolio-v2'
 tag: 'projects'
 title: 'Andrew Parris'
 ---
